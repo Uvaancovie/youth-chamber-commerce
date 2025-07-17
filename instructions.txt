@@ -1,0 +1,83 @@
+Below is a two‑part “recipe.” First, a ready‑to‑paste **GitHub Copilot prompt template** you can drop into your IDE to scaffold a corporate‑blue + South‑African‑colors Next.js site; then, a step‑by‑step on how to deploy that Next.js app to Vercel and point your x10Premium domain at it via cPanel DNS.
+
+---
+
+## 1. GitHub Copilot Prompt Template
+
+```txt
+// Project: Youth Chamber of Commerce & Industry (YCCI) Website
+// Style: Corporate blue (#004080) + South African green (#007749), gold/yellow (#FFB612), black/white accents
+// Layout: Next.js 13 App Router + Tailwind CSS + TypeScript
+// Sections: 
+//   - Header (logo + nav: Home, About, Membership, Core Areas, News, Events, Contact) 
+//   - Homepage hero with upcoming event highlight
+//   - About Us page with mission & challenges
+//   - Membership page with multi‑step application form
+//   - Core Areas overview page
+//   - News/Blog list + single‑post layout
+//   - Events calendar page
+//   - Contact form + map embed
+//
+// Generate the entire codebase scaffold: package.json, tailwind.config.js, app/layout.tsx, app/page.tsx, plus one example page component (e.g. About Us).
+```
+
+### How to Use
+
+1. Create a new repo locally (`git init`), open VS Code.
+2. In your code editor, make a blank file `copilot-prompt.txt` and paste the above.
+3. Open a new `.tsx` file (e.g. `app/layout.tsx`) and invoke Copilot: start typing a comment like `// Header component…` then press **Ctrl+Enter** (or your Copilot trigger) to let it generate the JSX/Tailwind code.
+4. Repeat for each section: give Copilot the section header comment, then accept or tweak the suggested component.
+
+---
+
+## 2. Deploy to Vercel & Point Your Domain
+
+### A. Push to GitHub & Connect Vercel
+
+1. **Commit & Push**
+
+   ```bash
+   git add .
+   git commit -m "Initial scaffold via Copilot"
+   git branch -M main
+   gh repo create ycci-site --public --source=. --push
+   ```
+2. **Import on Vercel**
+
+   * Sign in at vercel.com → **New Project** → select your `ycci-site` repo → click **Deploy**.
+   * Vercel will detect Next.js and build automatically.
+
+### B. Add Custom Domain in Vercel
+
+1. In your Vercel dashboard → Project Settings → **Domains** → **Add** → enter `ycciafrica.co.za`.
+2. Vercel will show you two records:
+
+   ```
+   A    @      76.76.21.21  
+   CNAME www   cname.vercel-dns.com.
+   ```
+
+### C. Configure x10Premium DNS via cPanel
+
+1. **Log in** to cPanel at [http://ycciafrica.co.za:2083](http://ycciafrica.co.za:2083) (user: `ycciafri` / your pass).
+2. Go to **Zone Editor** (or **Domains → DNS Zone Editor**).
+3. **Delete** any old A/CNAME for @ or [www](http://www).
+4. **Add A Record**
+
+   * Name: `ycciafrica.co.za` (or `@`)
+   * Address: `76.76.21.21`
+5. **Add CNAME Record**
+
+   * Name: `www`
+   * Canonical Name: `cname.vercel-dns.com.`
+6. **Save**, set TTL to 300 seconds.
+
+### D. Final Steps
+
+* Wait \~5–60 minutes for DNS to propagate.
+* In Vercel’s Domains panel, click **Verify**.
+* Vercel auto‑issues HTTPS—your site will now live at **[https://ycciafrica.co.za](https://ycciafrica.co.za)** and **[https://www.ycciafrica.co.za](https://www.ycciafrica.co.za)**.
+
+---
+
+With that, Copilot will scaffold a polished, corporate‑blue + SA‑flag–accented Next.js site, you’ll host it on Vercel, and your x10Premium‑controlled domain will point right at it. Enjoy building!
