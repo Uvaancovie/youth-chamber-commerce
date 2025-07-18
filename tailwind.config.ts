@@ -9,6 +9,13 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        // YCCISA Brand Colors (from feedback1.md)
+        'primary': '#0F173E',        // header/footer blue (corporate dark navy)
+        'gold': '#F6A003',           // CTA, hover (vibrant gold)
+        'maroon': '#9B1A37',         // subheads, accents (deep red)
+        'teal': '#0B97C0',           // links, highlights (accent teal)
+        
+        // Legacy South African flag colors (kept for compatibility)
         'corporate-blue': '#003366', // Superman-inspired corporate blue
         'sa-green': '#007749',       // South African flag green
         'sa-gold': '#FFB612',        // South African flag gold
@@ -21,6 +28,8 @@ const config: Config = {
       fontFamily: {
         'sans': ['var(--font-inter)', 'Inter', 'system-ui', 'sans-serif'],
         'display': ['var(--font-playfair)', 'Playfair Display', 'serif'],
+        'heading': ['Lato', 'sans-serif'],     // From feedback1.md
+        'body': ['Montserrat', 'sans-serif'],  // From feedback1.md
       },
       animation: {
         'flag-wave': 'flag-wave 3s ease-in-out infinite',

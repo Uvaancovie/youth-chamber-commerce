@@ -24,14 +24,14 @@ const navigation = [
     name: 'Membership', 
     href: '/membership',
     dropdown: [
-      { name: 'Join YCCI', href: '/membership' },
+      { name: 'Join YCCISA', href: '/membership' },
       { name: 'Member Benefits', href: '/membership#benefits' },
       { name: 'Membership Tiers', href: '/membership#tiers' },
       { name: 'Application Process', href: '/membership#process' }
     ]
   },
   { 
-    name: 'Programs', 
+    name: 'Core Areas', 
     href: '/core-areas',
     dropdown: [
       { name: 'All Programs', href: '/core-areas' },
@@ -42,13 +42,19 @@ const navigation = [
     ]
   },
   { 
-    name: 'News & Events', 
+    name: 'News', 
     href: '/news',
     dropdown: [
       { name: 'Latest News', href: '/news' },
-      { name: 'Upcoming Events', href: '/events' },
-      { name: 'Past Events', href: '/events#past' },
       { name: 'Media Center', href: '/news#media' }
+    ]
+  },
+  { 
+    name: 'Events', 
+    href: '/events',
+    dropdown: [
+      { name: 'Upcoming Events', href: '/events' },
+      { name: 'Past Events', href: '/events#past' }
     ]
   },
   { 
@@ -67,22 +73,22 @@ export default function Header() {
       {/* South African Flag Top Bar */}
       <div className="sa-flag-full h-2 flag-wave"></div>
       
-      <header className="bg-gradient-to-r from-corporate-blue via-sa-navy to-corporate-blue shadow-2xl sticky top-0 z-50 backdrop-blur-sm">
+      <header className="bg-primary shadow-2xl sticky top-0 z-50 backdrop-blur-sm">
         <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
           <div className="flex lg:flex-1">
             <Link href="/" className="-m-1.5 p-1.5 group">
-              <span className="sr-only">YCCI Africa - Youth Chamber of Commerce & Industry</span>
+              <span className="sr-only">YCCISA - Youth Chamber of Commerce & Industry South Africa</span>
               <div className="flex items-center space-x-4">
                 <div className="relative">
-                  <div className="w-12 h-12 bg-gradient-to-br from-sa-gold to-sa-green rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                    <span className="corporate-heading text-corporate-blue font-bold text-xl">Y</span>
-                  </div>
-                  {/* Mini flag accent */}
-                  <div className="absolute -top-1 -right-1 w-4 h-3 sa-flag-full rounded-sm opacity-80"></div>
+                  <img 
+                    src="/Official YCCi SA_2025.png" 
+                    alt="YCCISA Logo" 
+                    className="h-12 w-auto group-hover:scale-110 transition-transform duration-300"
+                  />
                 </div>
                 <div className="text-white">
-                  <div className="corporate-heading font-bold text-2xl tracking-tight text-on-blue">YCCI Africa</div>
-                  <div className="corporate-body text-xs opacity-90 text-sa-gold">Youth Chamber of Commerce & Industry</div>
+                  <div className="font-heading font-bold text-2xl tracking-tight text-on-blue">YCCISA</div>
+                  <div className="font-body text-xs opacity-90 text-gold">Youth Chamber of Commerce & Industry South Africa</div>
                 </div>
               </div>
             </Link>
@@ -109,7 +115,7 @@ export default function Header() {
               >
                 <Link
                   href={item.href}
-                  className="corporate-subheading flex items-center text-sm font-semibold leading-6 nav-text-blue transition-all duration-200 px-4 py-3 rounded-lg hover:bg-white/10 hover:text-sa-gold"
+                  className="font-heading flex items-center text-sm font-semibold leading-6 nav-text-blue transition-all duration-200 px-4 py-3 rounded-lg hover:bg-white/10 hover:text-gold"
                   style={{animationDelay: `${index * 100}ms`}}
                 >
                   {item.name}
@@ -126,7 +132,7 @@ export default function Header() {
                       <Link
                         key={dropdownItem.name}
                         href={dropdownItem.href}
-                        className="block px-4 py-3 text-sm font-medium nav-text-white hover:bg-gradient-to-r hover:from-corporate-blue/5 hover:to-sa-green/5 hover:text-corporate-blue transition-all duration-200 border-l-2 border-transparent hover:border-sa-gold"
+                        className="block px-4 py-3 text-sm font-medium nav-text-white hover:bg-gradient-to-r hover:from-primary/5 hover:to-teal/5 hover:text-primary transition-all duration-200 border-l-2 border-transparent hover:border-gold"
                       >
                         {dropdownItem.name}
                       </Link>
@@ -140,16 +146,16 @@ export default function Header() {
           <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-4">
             <Link
               href="/contact"
-              className="corporate-subheading text-sm font-semibold nav-text-blue hover:text-sa-gold transition-colors px-4 py-2 rounded-lg hover:bg-white/10"
+              className="font-heading text-sm font-semibold nav-text-blue hover:text-gold transition-colors px-4 py-2 rounded-lg hover:bg-white/10"
             >
               Get in Touch
             </Link>
             <Link
               href="/membership"
-              className="btn-corporate inline-flex items-center rounded-xl bg-gradient-to-r from-sa-gold to-sa-green px-4 py-2.5 text-sm font-bold text-corporate-blue shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+              className="btn-corporate inline-flex items-center rounded-xl bg-gradient-to-r from-gold to-maroon px-4 py-2.5 text-sm font-bold text-white shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
             >
               <span className="mr-2">🚀</span>
-              Join YCCI
+              Join YCCISA
               <span className="ml-2">🇿🇦</span>
             </Link>
           </div>
@@ -158,18 +164,20 @@ export default function Header() {
       {mobileMenuOpen && (
         <div className="lg:hidden">
           <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm" onClick={() => setMobileMenuOpen(false)}></div>
-          <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-gradient-to-br from-corporate-blue via-sa-navy to-corporate-blue sm:max-w-sm border-l border-sa-gold/20 shadow-2xl">
+          <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-primary sm:max-w-sm border-l border-gold/20 shadow-2xl">
             {/* Mobile Header */}
             <div className="flex items-center justify-between p-6 border-b border-white/10">
               <Link href="/" className="-m-1.5 p-1.5 group" onClick={() => setMobileMenuOpen(false)}>
-                <span className="sr-only">YCCI Africa</span>
+                <span className="sr-only">YCCISA</span>
                 <div className="flex items-center space-x-3">
-                  <div className="w-10 h-10 bg-gradient-to-br from-sa-gold to-sa-green rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                    <span className="corporate-heading text-corporate-blue font-bold text-lg">Y</span>
-                  </div>
+                  <img 
+                    src="/icon.png" 
+                    alt="YCCISA Icon" 
+                    className="w-10 h-10 group-hover:scale-110 transition-transform duration-300"
+                  />
                   <div className="text-on-blue">
-                    <div className="corporate-heading font-bold text-xl">YCCI Africa</div>
-                    <div className="corporate-body text-xs opacity-90 text-sa-gold">Youth Chamber</div>
+                    <div className="font-heading font-bold text-xl">YCCISA</div>
+                    <div className="font-body text-xs opacity-90 text-gold">Youth Chamber</div>
                   </div>
                 </div>
               </Link>
@@ -191,16 +199,16 @@ export default function Header() {
                   <div key={item.name}>
                     <Link
                       href={item.href}
-                      className="corporate-subheading flex items-center rounded-xl px-4 py-4 text-base font-semibold text-on-blue hover:text-sa-gold hover:bg-white/10 transition-all duration-200 group transform hover:translate-x-2"
+                      className="font-heading flex items-center rounded-xl px-4 py-4 text-base font-semibold text-on-blue hover:text-gold hover:bg-white/10 transition-all duration-200 group transform hover:translate-x-2"
                       onClick={() => item.dropdown.length === 0 && setMobileMenuOpen(false)}
                       style={{animationDelay: `${index * 50}ms`}}
                     >
-                      <span className="mr-4 text-sa-gold group-hover:scale-110 transition-transform duration-200">→</span>
+                      <span className="mr-4 text-gold group-hover:scale-110 transition-transform duration-200">→</span>
                       <span className="flex-1">{item.name}</span>
                       {item.dropdown.length > 0 && (
-                        <ChevronDown className="h-4 w-4 text-sa-gold" />
+                        <ChevronDown className="h-4 w-4 text-gold" />
                       )}
-                      <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-sa-gold">✨</span>
+                      <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-gold">✨</span>
                     </Link>
                     
                     {/* Mobile Dropdown Items */}
@@ -210,7 +218,7 @@ export default function Header() {
                           <Link
                             key={dropdownItem.name}
                             href={dropdownItem.href}
-                            className="block px-4 py-2 text-sm text-on-blue/80 hover:text-sa-gold hover:bg-white/5 rounded-lg transition-all duration-200"
+                            className="block px-4 py-2 text-sm text-on-blue/80 hover:text-gold hover:bg-white/5 rounded-lg transition-all duration-200"
                             onClick={() => setMobileMenuOpen(false)}
                           >
                             {dropdownItem.name}
@@ -235,11 +243,11 @@ export default function Header() {
                 
                 <Link
                   href="/membership"
-                  className="flex w-full items-center justify-center rounded-xl bg-gradient-to-r from-sa-gold to-sa-green px-6 py-4 text-base font-bold text-corporate-blue shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+                  className="flex w-full items-center justify-center rounded-xl bg-gradient-to-r from-gold to-maroon px-6 py-4 text-base font-bold text-white shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   <span className="mr-2">🚀</span>
-                  Join YCCI Today
+                  Join YCCISA Today
                   <span className="ml-2">🇿🇦</span>
                 </Link>
               </div>

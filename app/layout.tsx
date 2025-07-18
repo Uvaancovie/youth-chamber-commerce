@@ -17,39 +17,39 @@ const playfair = Playfair_Display({
 })
 
 export const metadata = {
-  title: 'Youth Chamber of Commerce & Industry - YCCI Africa | Empowering Young Entrepreneurs',
-  description: 'Join YCCI Africa, South Africa\'s premier youth business chamber. Connect with 500+ young entrepreneurs, access mentorship, funding opportunities, and transform your business journey. Membership from R50/month.',
-  keywords: 'South Africa youth entrepreneurs, business chamber, networking, mentorship, YCCI, youth development, business funding, entrepreneurship, young professionals, business community, AfCFTA, UN SDGs',
-  authors: [{ name: 'YCCI Africa' }],
-  creator: 'Youth Chamber of Commerce & Industry Africa',
-  publisher: 'YCCI Africa',
+  title: 'Youth Chamber of Commerce & Industry South Africa - YCCISA | Empowering Young Entrepreneurs',
+  description: 'Join YCCISA, South Africa\'s premier youth business chamber. Connect with 500+ young entrepreneurs, access mentorship, funding opportunities, and transform your business journey. Building the future of SA business.',
+  keywords: 'South Africa youth entrepreneurs, business chamber, networking, mentorship, YCCISA, youth development, business funding, entrepreneurship, young professionals, business community, AfCFTA, UN SDGs',
+  authors: [{ name: 'YCCISA' }],
+  creator: 'Youth Chamber of Commerce & Industry South Africa',
+  publisher: 'YCCISA',
   robots: 'index, follow',
   openGraph: {
     type: 'website',
     locale: 'en_ZA',
-    url: 'https://ycci-africa.org',
-    siteName: 'YCCI Africa - Youth Chamber of Commerce & Industry',
-    title: 'YCCI Africa | Empowering Young Entrepreneurs in South Africa',
+    url: 'https://yccisa.org',
+    siteName: 'YCCISA - Youth Chamber of Commerce & Industry South Africa',
+    title: 'YCCISA | Empowering Young Entrepreneurs in South Africa',
     description: 'Join South Africa\'s premier youth business chamber. Connect with 500+ young entrepreneurs, access mentorship, funding opportunities, and business development resources.',
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'YCCI Africa - Youth Chamber of Commerce & Industry',
+        alt: 'YCCISA - Youth Chamber of Commerce & Industry South Africa',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    site: '@YCCIAfrica',
-    creator: '@YCCIAfrica',
-    title: 'YCCI Africa | Empowering Young Entrepreneurs',
+    site: '@YCCISA',
+    creator: '@YCCISA',
+    title: 'YCCISA | Empowering Young Entrepreneurs',
     description: 'Join South Africa\'s premier youth business chamber. 500+ members, mentorship programs, and funding opportunities.',
     images: ['/twitter-image.jpg'],
   },
   alternates: {
-    canonical: 'https://ycci-africa.org',
+    canonical: 'https://yccisa.org',
   },
   verification: {
     google: 'your-google-verification-code',
