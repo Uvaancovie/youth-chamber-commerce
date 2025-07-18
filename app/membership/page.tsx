@@ -1,486 +1,298 @@
-'use client'
+import { Metadata } from 'next'
+import MembershipForm from './MembershipForm'
 
-import { useState } from 'react'
+// SEO metadata for membership page
+export const metadata: Metadata = {
+  title: 'Join YCCI Africa | Membership Plans Starting R50/month | Youth Business Chamber',
+  description: 'Become a member of YCCI Africa starting from R50/month. Access 500+ entrepreneurs, mentorship, funding opportunities, and exclusive business development programs.',
+  keywords: 'YCCI membership, youth entrepreneurs South Africa, business chamber membership, networking opportunities, mentorship programs, business funding, entrepreneur community',
+  openGraph: {
+    title: 'Join YCCI Africa | Transform Your Business Journey',
+    description: 'Join 500+ young entrepreneurs in South Africa\'s premier business chamber. Membership from R50/month with mentorship, networking, and funding opportunities.',
+    images: ['/membership-og.jpg'],
+    url: 'https://ycci-africa.org/membership',
+  },
+  twitter: {
+    title: 'Join YCCI Africa | Youth Business Membership',
+    description: 'Transform your entrepreneurial journey with YCCI Africa membership. Starting R50/month.',
+    images: ['/membership-twitter.jpg'],
+  },
+}
 
 const membershipTiers = [
   {
-    name: "Student Member",
-    price: "R100",
-    period: "per year",
-    description: "Perfect for students and recent graduates starting their entrepreneurial journey",
+    name: "Associate Member",
+    price: "R50",
+    period: "per month",
+    description: "Perfect for young professionals starting their business journey with YCCI Africa",
     features: [
-      "Access to networking events",
-      "Monthly newsletters",
-      "Basic mentorship matching",
-      "Online resource library",
-      "Student-only workshops"
+      "Monthly YCCI Africa newsletters and updates",
+      "Access to online business resources",
+      "Basic networking opportunities",
+      "Youth development webinars",
+      "Digital membership certificate",
+      "Access to member-only WhatsApp groups"
     ],
-    color: "border-sa-green"
+    color: "border-sa-green",
+    icon: "🌱",
+    popular: false
   },
   {
-    name: "Professional Member",
-    price: "R500",
-    period: "per year",
-    description: "Ideal for established young professionals and emerging entrepreneurs",
+    name: "Entrepreneur Member", 
+    price: "R250",
+    period: "per month",
+    description: "Ideal for established young entrepreneurs and growing businesses",
     features: [
-      "All Student Member benefits",
-      "Priority event access",
-      "One-on-one mentorship sessions",
-      "Industry-specific workshops",
+      "All Associate Member benefits",
+      "Priority event access and networking",
+      "One-on-one mentorship opportunities", 
+      "Industry-specific workshops and training",
       "Business development resources",
-      "Networking dinner invitations"
+      "Access to funding opportunities",
+      "Quarterly business review sessions",
+      "YCCI member directory access"
     ],
     color: "border-corporate-blue",
+    icon: "🚀",
     popular: true
   },
   {
     name: "Corporate Member",
-    price: "R2000",
+    price: "R250,000", 
     period: "per year",
-    description: "For established businesses wanting to support youth development",
+    description: "For established corporations committed to youth development and empowerment",
     features: [
-      "All Professional Member benefits",
-      "Corporate partnership opportunities",
-      "Sponsor recognition at events",
-      "Access to talent pipeline",
-      "Custom workshop hosting",
-      "Annual corporate retreat invitation"
+      "All Entrepreneur Member benefits",
+      "Corporate partnership opportunities", 
+      "Brand recognition at YCCI events",
+      "Access to talent pipeline and recruitment",
+      "Custom training and workshop hosting",
+      "Annual corporate retreat invitations",
+      "CSR and BEE collaboration opportunities",
+      "Executive leadership council participation",
+      "Premium corporate visibility package"
     ],
-    color: "border-sa-gold"
+    color: "border-sa-gold",
+    icon: "🏢",
+    popular: false
   }
 ]
 
 export default function Membership() {
-  const [selectedTier, setSelectedTier] = useState('')
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    age: '',
-    occupation: '',
-    company: '',
-    industry: '',
-    experience: '',
-    interests: '',
-    goals: '',
-    referral: ''
-  })
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }))
-  }
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    // Handle form submission here
-    console.log('Form submitted:', { selectedTier, ...formData })
-    alert('Thank you for your application! We will review it and get back to you within 3-5 business days.')
+  // Structured data for membership page
+  const membershipStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "MembershipOrganization",
+    "name": "Youth Chamber of Commerce & Industry Africa",
+    "alternateName": "YCCI Africa",
+    "url": "https://ycci-africa.org/membership",
+    "description": "Join YCCI Africa with membership tiers designed for young entrepreneurs and businesses",
+    "membershipType": [
+      {
+        "@type": "Offer",
+        "name": "Associate Member",
+        "description": "Perfect for young professionals starting their business journey",
+        "price": "50",
+        "priceCurrency": "ZAR",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "50",
+          "priceCurrency": "ZAR",
+          "unitCode": "MON"
+        }
+      },
+      {
+        "@type": "Offer",
+        "name": "Entrepreneur Member",
+        "description": "Ideal for established young entrepreneurs and growing businesses",
+        "price": "250",
+        "priceCurrency": "ZAR",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "250",
+          "priceCurrency": "ZAR",
+          "unitCode": "MON"
+        }
+      },
+      {
+        "@type": "Offer",
+        "name": "Corporate Member",
+        "description": "For established corporations committed to youth development",
+        "price": "250000",
+        "priceCurrency": "ZAR",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "250000",
+          "priceCurrency": "ZAR",
+          "unitCode": "ANN"
+        }
+      }
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+27-79-654-6630",
+      "email": "membership@ycci-africa.org",
+      "contactType": "Membership Services"
+    }
   }
 
   return (
-    <div className="bg-white">
-      {/* Hero Section */}
-      <div className="hero-gradient text-white py-16">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+    <div className="bg-white min-h-screen">
+      {/* SEO Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(membershipStructuredData) }}
+      />
+      
+      {/* Hero Section with South African Flag */}
+      <div className="hero-gradient text-white py-20 relative overflow-hidden">
+        {/* Floating South African Flag Elements */}
+        <div className="absolute top-10 left-10 floating">
+          <div className="w-16 h-12 sa-flag-full rounded-md shadow-lg"></div>
+        </div>
+        <div className="absolute top-20 right-20 floating" style={{animationDelay: '1s'}}>
+          <div className="w-12 h-8 sa-flag-full rounded-md shadow-lg"></div>
+        </div>
+        <div className="absolute bottom-20 left-1/4 floating" style={{animationDelay: '2s'}}>
+          <div className="w-10 h-6 sa-flag-full rounded-md shadow-lg"></div>
+        </div>
+        
+        <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
           <div className="text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
-              Join YCCI Africa
-            </h1>
-            <p className="mt-6 text-lg leading-8 text-gray-100 max-w-3xl mx-auto">
-              Become part of South Africa's premier youth chamber of commerce. 
-              Access exclusive networks, mentorship, and opportunities to grow your career and business.
+            <div className="mb-6">
+              <h1 className="corporate-heading text-5xl font-bold tracking-tight text-white sm:text-7xl mb-4">
+                Join <span className="text-gradient bg-clip-text text-transparent bg-gradient-to-r from-sa-gold via-white to-sa-green">YCCI Africa</span>
+              </h1>
+              <div className="sa-flag-full max-w-md mx-auto mb-6"></div>
+            </div>
+            <p className="corporate-body mt-6 text-xl leading-8 text-gray-100 max-w-4xl mx-auto">
+              Become part of South Africa's premier youth business chamber. 
+              Access exclusive networks, mentorship, and opportunities to transform your entrepreneurial journey into lasting success.
             </p>
+            <div className="mt-8 flex justify-center gap-4">
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg px-6 py-3 border border-white/20">
+                <span className="text-sa-gold font-bold text-lg">🇿🇦</span>
+                <span className="text-white ml-2 font-semibold">Proudly South African</span>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg px-6 py-3 border border-white/20">
+                <span className="text-sa-gold font-bold text-lg">👥</span>
+                <span className="text-white ml-2 font-semibold">500+ Members</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div className="sa-flag-accent"></div>
+      
+      {/* Premium Flag Accent */}
+      <div className="sa-flag-full flag-wave"></div>
 
-      {/* Membership Tiers */}
-      <section className="py-16">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-              Choose Your Membership
+      {/* Membership Form Component */}
+      <MembershipForm />
+
+      {/* Enhanced Benefits Section */}
+      <section className="py-20 bg-gradient-to-br from-white via-gray-50 to-white relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-0 left-0 w-full h-full" style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23003366' fill-opacity='0.1'%3E%3Cpath d='m36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          }}></div>
+        </div>
+        
+        <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-16">
+            <h2 className="corporate-heading text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl mb-6">
+              Why Choose <span className="text-gradient">YCCI Africa</span>?
             </h2>
-            <p className="mt-4 text-lg leading-8 text-gray-600">
-              Select the membership tier that best fits your current stage and goals
+            <div className="sa-flag-accent max-w-lg mx-auto mb-6"></div>
+            <p className="corporate-body text-xl leading-8 text-gray-600 max-w-4xl mx-auto">
+              Discover the transformational benefits that come with being part of South Africa's premier youth business community
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-            {membershipTiers.map((tier) => (
-              <div
-                key={tier.name}
-                className={`relative rounded-2xl border-2 ${tier.color} p-8 ${
-                  tier.popular ? 'ring-2 ring-corporate-blue' : ''
-                } ${selectedTier === tier.name ? 'bg-blue-50' : 'bg-white'} cursor-pointer transition-all hover:shadow-lg`}
-                onClick={() => setSelectedTier(tier.name)}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+            {[
+              {
+                icon: "🌐",
+                title: "Extensive Network",
+                description: "Connect with 500+ young entrepreneurs, business leaders, and industry experts across South Africa and beyond.",
+                gradient: "from-corporate-blue to-sa-navy"
+              },
+              {
+                icon: "🎓", 
+                title: "World-Class Learning",
+                description: "Access exclusive workshops, masterclasses, and training programs designed by industry leaders.",
+                gradient: "from-sa-green to-corporate-blue"
+              },
+              {
+                icon: "🚀",
+                title: "Business Acceleration", 
+                description: "Get direct access to funding opportunities, mentorship programs, and business development resources.",
+                gradient: "from-sa-gold to-sa-green"
+              },
+              {
+                icon: "🏆",
+                title: "Recognition Platform",
+                description: "Showcase achievements and get recognized as a rising star in South Africa's business ecosystem.",
+                gradient: "from-sa-red to-sa-gold"
+              },
+              {
+                icon: "💼",
+                title: "Career Advancement",
+                description: "Access exclusive job opportunities, internships, and career guidance from top professionals.",
+                gradient: "from-corporate-blue to-sa-green"
+              },
+              {
+                icon: "🇿🇦",
+                title: "Policy Influence",
+                description: "Shape policies affecting young entrepreneurs and contribute to South Africa's economic transformation.",
+                gradient: "from-sa-navy to-corporate-blue"
+              }
+            ].map((benefit, index) => (
+              <div 
+                key={benefit.title}
+                className="premium-card rounded-3xl p-8 text-center shine group hover:scale-105 transition-all duration-300"
+                style={{animationDelay: `${index * 100}ms`}}
               >
-                {tier.popular && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <span className="bg-corporate-blue text-white px-4 py-1 rounded-full text-sm font-medium">
-                      Most Popular
-                    </span>
-                  </div>
-                )}
-                <div className="text-center mb-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">{tier.name}</h3>
-                  <div className="flex items-baseline justify-center">
-                    <span className="text-4xl font-bold text-corporate-blue">{tier.price}</span>
-                    <span className="text-gray-500 ml-1">/{tier.period}</span>
-                  </div>
-                  <p className="text-gray-600 text-sm mt-2">{tier.description}</p>
+                <div className={`w-20 h-20 bg-gradient-to-br ${benefit.gradient} rounded-full flex items-center justify-center mx-auto mb-6 floating group-hover:scale-110 transition-transform duration-300`}
+                     style={{animationDelay: `${index * 200}ms`}}>
+                  <span className="text-white text-3xl">{benefit.icon}</span>
                 </div>
+                <h3 className="corporate-subheading text-xl font-bold text-gray-900 mb-4">{benefit.title}</h3>
+                <p className="corporate-body text-gray-600 leading-relaxed">{benefit.description}</p>
                 
-                <ul className="space-y-3 mb-8">
-                  {tier.features.map((feature, index) => (
-                    <li key={index} className="flex items-center text-sm">
-                      <span className="text-sa-green mr-2">✓</span>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="text-center">
-                  <input
-                    type="radio"
-                    name="membershipTier"
-                    value={tier.name}
-                    checked={selectedTier === tier.name}
-                    onChange={(e) => setSelectedTier(e.target.value)}
-                    className="w-4 h-4 text-corporate-blue"
-                  />
-                  <label className="ml-2 text-sm font-medium text-gray-700">
-                    Select {tier.name}
-                  </label>
-                </div>
+                {/* Mini flag accent */}
+                <div className="mt-4 mx-auto w-16 h-1 sa-flag-accent rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* Application Form */}
-      {selectedTier && (
-        <section className="py-16 bg-gray-50">
-          <div className="mx-auto max-w-4xl px-6 lg:px-8">
-            <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold tracking-tight text-gray-900">
-                Application Form
-              </h2>
-              <p className="mt-4 text-lg leading-8 text-gray-600">
-                You've selected: <span className="font-semibold text-corporate-blue">{selectedTier}</span>
-              </p>
-            </div>
-
-            <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow-md p-8">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div>
-                  <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">
-                    First Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="firstName"
-                    name="firstName"
-                    required
-                    value={formData.firstName}
-                    onChange={handleInputChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-corporate-blue"
-                  />
-                </div>
-                
-                <div>
-                  <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-2">
-                    Last Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="lastName"
-                    name="lastName"
-                    required
-                    value={formData.lastName}
-                    onChange={handleInputChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-corporate-blue"
-                  />
+          {/* Call to Action */}
+          <div className="text-center">
+            <div className="premium-card rounded-3xl p-12 bg-gradient-to-br from-corporate-blue via-sa-navy to-sa-green text-white relative overflow-hidden">
+              {/* Flag elements */}
+              <div className="absolute top-0 right-0 w-24 h-16 sa-flag-full rounded-bl-3xl opacity-20"></div>
+              <div className="absolute bottom-0 left-0 w-20 h-12 sa-flag-full rounded-tr-3xl opacity-20"></div>
+              
+              <div className="relative z-10">
+                <h3 className="corporate-heading text-3xl font-bold mb-4">
+                  Ready to Transform Your Future?
+                </h3>
+                <p className="corporate-body text-xl text-white/90 mb-8 max-w-3xl mx-auto">
+                  Join thousands of ambitious young South Africans who are already building tomorrow's economy. 
+                  Your journey to business excellence starts here.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                  <button className="btn-corporate inline-flex items-center px-8 py-4 text-lg font-bold rounded-2xl shadow-xl">
+                    <span className="mr-3">🚀</span>
+                    Start Your Application
+                    <span className="ml-3">🇿🇦</span>
+                  </button>
+                  <div className="flex items-center text-white/80">
+                    <span className="text-2xl mr-2">⭐</span>
+                    <span className="corporate-body">Trusted by 500+ Young Leaders</span>
+                  </div>
                 </div>
               </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                    Email Address *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-corporate-blue"
-                  />
-                </div>
-                
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                    Phone Number *
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    required
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-corporate-blue"
-                  />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div>
-                  <label htmlFor="age" className="block text-sm font-medium text-gray-700 mb-2">
-                    Age *
-                  </label>
-                  <select
-                    id="age"
-                    name="age"
-                    required
-                    value={formData.age}
-                    onChange={handleInputChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-corporate-blue"
-                  >
-                    <option value="">Select age range</option>
-                    <option value="18-22">18-22</option>
-                    <option value="23-27">23-27</option>
-                    <option value="28-32">28-32</option>
-                    <option value="33-35">33-35</option>
-                  </select>
-                </div>
-                
-                <div>
-                  <label htmlFor="occupation" className="block text-sm font-medium text-gray-700 mb-2">
-                    Current Occupation *
-                  </label>
-                  <input
-                    type="text"
-                    id="occupation"
-                    name="occupation"
-                    required
-                    value={formData.occupation}
-                    onChange={handleInputChange}
-                    placeholder="e.g., Student, Entrepreneur, Marketing Manager"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-corporate-blue"
-                  />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div>
-                  <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
-                    Company/Institution
-                  </label>
-                  <input
-                    type="text"
-                    id="company"
-                    name="company"
-                    value={formData.company}
-                    onChange={handleInputChange}
-                    placeholder="Current employer or university"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-corporate-blue"
-                  />
-                </div>
-                
-                <div>
-                  <label htmlFor="industry" className="block text-sm font-medium text-gray-700 mb-2">
-                    Industry *
-                  </label>
-                  <select
-                    id="industry"
-                    name="industry"
-                    required
-                    value={formData.industry}
-                    onChange={handleInputChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-corporate-blue"
-                  >
-                    <option value="">Select industry</option>
-                    <option value="Technology">Technology</option>
-                    <option value="Finance">Finance</option>
-                    <option value="Healthcare">Healthcare</option>
-                    <option value="Education">Education</option>
-                    <option value="Retail">Retail</option>
-                    <option value="Manufacturing">Manufacturing</option>
-                    <option value="Agriculture">Agriculture</option>
-                    <option value="Tourism">Tourism</option>
-                    <option value="Creative Arts">Creative Arts</option>
-                    <option value="Other">Other</option>
-                  </select>
-                </div>
-              </div>
-
-              <div className="mb-6">
-                <label htmlFor="experience" className="block text-sm font-medium text-gray-700 mb-2">
-                  Business/Professional Experience *
-                </label>
-                <select
-                  id="experience"
-                  name="experience"
-                  required
-                  value={formData.experience}
-                  onChange={handleInputChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-corporate-blue"
-                >
-                  <option value="">Select experience level</option>
-                  <option value="0-1 years">0-1 years</option>
-                  <option value="2-3 years">2-3 years</option>
-                  <option value="4-5 years">4-5 years</option>
-                  <option value="6+ years">6+ years</option>
-                </select>
-              </div>
-
-              <div className="mb-6">
-                <label htmlFor="interests" className="block text-sm font-medium text-gray-700 mb-2">
-                  Areas of Interest *
-                </label>
-                <textarea
-                  id="interests"
-                  name="interests"
-                  required
-                  rows={3}
-                  value={formData.interests}
-                  onChange={handleInputChange}
-                  placeholder="What business areas, skills, or topics are you most interested in?"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-corporate-blue"
-                />
-              </div>
-
-              <div className="mb-6">
-                <label htmlFor="goals" className="block text-sm font-medium text-gray-700 mb-2">
-                  Goals and Expectations *
-                </label>
-                <textarea
-                  id="goals"
-                  name="goals"
-                  required
-                  rows={3}
-                  value={formData.goals}
-                  onChange={handleInputChange}
-                  placeholder="What do you hope to achieve through your YCCI membership?"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-corporate-blue"
-                />
-              </div>
-
-              <div className="mb-8">
-                <label htmlFor="referral" className="block text-sm font-medium text-gray-700 mb-2">
-                  How did you hear about YCCI?
-                </label>
-                <select
-                  id="referral"
-                  name="referral"
-                  value={formData.referral}
-                  onChange={handleInputChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-corporate-blue"
-                >
-                  <option value="">Select an option</option>
-                  <option value="Social Media">Social Media</option>
-                  <option value="Friend/Colleague">Friend/Colleague</option>
-                  <option value="University">University</option>
-                  <option value="Event">Event</option>
-                  <option value="Website">Website</option>
-                  <option value="Other">Other</option>
-                </select>
-              </div>
-
-              <div className="text-center">
-                <button
-                  type="submit"
-                  className="bg-corporate-blue text-white px-8 py-3 rounded-md font-semibold hover:bg-blue-700 transition-colors"
-                >
-                  Submit Application
-                </button>
-              </div>
-            </form>
-          </div>
-        </section>
-      )}
-
-      {/* Benefits Section */}
-      <section className="py-16 bg-white">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-              Why Join YCCI?
-            </h2>
-            <p className="mt-4 text-lg leading-8 text-gray-600">
-              Discover the benefits that come with being part of our community
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-corporate-blue rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white text-2xl">🌐</span>
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">Extensive Network</h3>
-              <p className="text-gray-600 text-sm">
-                Connect with over 500 young entrepreneurs, business leaders, and industry experts across South Africa.
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 bg-sa-green rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white text-2xl">🎓</span>
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">Learning Opportunities</h3>
-              <p className="text-gray-600 text-sm">
-                Access exclusive workshops, masterclasses, and training programs designed for young professionals.
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 bg-sa-gold rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white text-2xl">🚀</span>
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">Business Growth</h3>
-              <p className="text-gray-600 text-sm">
-                Get access to funding opportunities, mentorship programs, and business development resources.
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 bg-sa-red rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white text-2xl">🏆</span>
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">Recognition</h3>
-              <p className="text-gray-600 text-sm">
-                Showcase your achievements and get recognized as a rising star in South Africa's business community.
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 bg-corporate-blue rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white text-2xl">💼</span>
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">Career Advancement</h3>
-              <p className="text-gray-600 text-sm">
-                Access job opportunities, internships, and career guidance from industry professionals.
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 bg-sa-green rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white text-2xl">🗣️</span>
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">Voice in Policy</h3>
-              <p className="text-gray-600 text-sm">
-                Help shape policies that affect young entrepreneurs and contribute to South Africa's economic development.
-              </p>
             </div>
           </div>
         </div>

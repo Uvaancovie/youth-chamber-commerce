@@ -1,259 +1,236 @@
-export default function About() {
+export default function AboutPage() {
   return (
-    <div className="bg-white">
-      {/* Hero Section */}
-      <div className="hero-gradient text-white py-16">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+    <div className="min-h-screen bg-white">
+      {/* Premium Hero Section */}
+      <div className="hero-gradient text-white py-20 relative overflow-hidden">
+        {/* Floating South African Flag Elements */}
+        <div className="absolute top-10 left-10 floating">
+          <div className="w-16 h-12 sa-flag-full rounded-md shadow-lg"></div>
+        </div>
+        <div className="absolute top-20 right-20 floating" style={{animationDelay: '1s'}}>
+          <div className="w-12 h-8 sa-flag-full rounded-md shadow-lg"></div>
+        </div>
+        <div className="absolute bottom-20 left-1/4 floating" style={{animationDelay: '2s'}}>
+          <div className="w-10 h-6 sa-flag-full rounded-md shadow-lg"></div>
+        </div>
+        
+        <div className="relative mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
           <div className="text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
-              About YCCI Africa
-            </h1>
-            <p className="mt-6 text-lg leading-8 text-gray-100 max-w-3xl mx-auto">
-              Empowering the next generation of African business leaders through innovation, 
-              collaboration, and sustainable economic development.
+            <div className="mb-6">
+              <h1 className="corporate-heading text-5xl font-bold tracking-tight text-white sm:text-7xl mb-4">
+                About <span className="text-gradient bg-clip-text text-transparent bg-gradient-to-r from-sa-gold via-white to-sa-green">YCCI Africa</span>
+              </h1>
+              <div className="sa-flag-full max-w-md mx-auto mb-6"></div>
+            </div>
+            <p className="corporate-body mt-6 text-xl leading-8 text-white/90 max-w-4xl mx-auto">
+              Youth Chamber of Commerce & Industry Africa - Empowering Young Entrepreneurs | Transforming Africa's Economy Through Innovation and Excellence
             </p>
+            <div className="mt-8 flex justify-center gap-4">
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg px-6 py-3 border border-white/20">
+                <span className="text-sa-gold font-bold text-lg">🇿🇦</span>
+                <span className="text-white ml-2 font-semibold">Proudly South African</span>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg px-6 py-3 border border-white/20">
+                <span className="text-sa-gold font-bold text-lg">🌍</span>
+                <span className="text-white ml-2 font-semibold">Africa-Wide Impact</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div className="sa-flag-accent"></div>
+      
+      {/* Premium Flag Accent */}
+      <div className="sa-flag-full flag-wave"></div>
 
-      {/* Mission Section */}
-      <section className="py-16">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+        {/* Organization Overview */}
+        <section className="mb-20 relative">
+          {/* Background Flag Elements */}
+          <div className="absolute inset-0 overflow-hidden opacity-5">
+            <div className="absolute top-10 left-10 w-24 h-18 sa-flag-full rounded-lg"></div>
+            <div className="absolute bottom-10 right-10 w-20 h-15 sa-flag-full rounded-lg"></div>
+          </div>
+          
+          <div className="text-center mb-16 relative z-10">
+            <h2 className="corporate-heading text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl mb-6">
+              Who <span className="text-gradient">We Are</span>
+            </h2>
+            <div className="sa-flag-accent max-w-md mx-auto mb-6"></div>
+          </div>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">`
             <div>
-              <h2 className="text-3xl font-bold tracking-tight text-gray-900 mb-6">
-                Our Mission
-              </h2>
+              <div className="relative h-96 bg-gradient-to-br from-corporate-blue/20 to-sa-green/20 rounded-lg flex items-center justify-center mb-6">
+                <div className="text-center">
+                  <div className="text-6xl mb-4">🏢</div>
+                  <h3 className="corporate-subheading text-2xl font-bold text-gray-800">YCCI Africa</h3>
+                  <p className="text-sm text-gray-600">South African Youth Business Chamber</p>
+                </div>
+              </div>
+            </div>
+            
+            <div>
               <p className="text-lg text-gray-600 mb-6">
-                The Youth Chamber of Commerce & Industry (YCCI) Africa is dedicated to 
-                fostering entrepreneurship and business excellence among young people across 
-                South Africa and the broader African continent.
+                The <strong>Youth Chamber of Commerce & Industry Africa (YCCI Africa)</strong> is a national organization committed to supporting and empowering young entrepreneurs across various sectors, enabling them to build successful businesses that contribute to Africa's economic growth and transformation.
               </p>
-              <p className="text-gray-600 mb-6">
-                We believe that young entrepreneurs are the driving force behind economic 
-                transformation and innovation. Our mission is to provide them with the tools, 
-                networks, and opportunities they need to build successful, sustainable businesses 
-                that create jobs and drive economic growth.
+              <p className="text-lg text-gray-600 mb-6">
+                We serve as the premier platform for youth entrepreneurship, business development, and economic transformation in South Africa and across the continent.
               </p>
-              <div className="bg-sa-gold/10 border-l-4 border-sa-gold p-4 rounded-r-lg">
-                <p className="text-corporate-blue font-semibold">
-                  "Building bridges between young entrepreneurs and opportunities for 
-                  sustainable economic growth across Africa."
+              <div className="border-l-4 border-corporate-blue pl-6">
+                <p className="text-gray-600 italic">
+                  "Together, we're building South Africa's next generation of business leaders."
                 </p>
               </div>
             </div>
-            <div className="bg-gray-100 aspect-square rounded-lg flex items-center justify-center">
-              <span className="text-6xl">🌍</span>
+          </div>
+        </section>
+
+        {/* Vision & Mission */}
+        <section className="mb-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {/* Vision */}
+            <div className="bg-gradient-to-br from-corporate-blue to-sa-navy rounded-2xl p-8 text-white">
+              <div className="text-center mb-6">
+                <div className="text-4xl mb-4">🎯</div>
+                <h3 className="text-2xl font-bold">Our Vision</h3>
+              </div>
+              <p className="text-lg text-center">
+                To create a self-sustaining, youth-driven business ecosystem that advances entrepreneurial innovation, industrialization, and economic integration in South Africa and across Africa.
+              </p>
+            </div>
+
+            {/* Mission */}
+            <div className="bg-gradient-to-br from-sa-green to-sa-gold rounded-2xl p-8 text-white">
+              <div className="text-center mb-6">
+                <div className="text-4xl mb-4">🚀</div>
+                <h3 className="text-2xl font-bold">Our Mission</h3>
+              </div>
+              <div className="space-y-3 text-sm">
+                <p>• Empower young entrepreneurs through training, mentorship, and funding access</p>
+                <p>• Facilitate business growth by connecting youth-led enterprises with investors</p>
+                <p>• Expand South African businesses into new markets under AfCFTA</p>
+                <p>• Promote sustainable business practices aligned with SDGs</p>
+                <p>• Support South Africa's economic transformation under NDP 2030</p>
+                <p>• Influence policy to ensure government and private sector support for youth businesses</p>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Challenges We Address */}
-      <section className="py-16 bg-gray-50">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        {/* Strategic Alignment */}
+        <section className="mb-20">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-              Challenges We Address
+              Strategic Alignment
             </h2>
-            <p className="mt-4 text-lg leading-8 text-gray-600">
-              Young entrepreneurs in Africa face unique challenges. We're here to help overcome them.
+            <p className="mt-4 text-lg text-gray-600">
+              Our mission is aligned with key national and international frameworks
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-white rounded-lg p-6 shadow-md">
-              <div className="w-12 h-12 bg-corporate-blue rounded-lg flex items-center justify-center mb-4">
-                <span className="text-white text-2xl">💰</span>
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                Access to Funding
-              </h3>
-              <p className="text-gray-600 text-sm">
-                Limited access to capital and investment opportunities for young entrepreneurs 
-                starting or scaling their businesses.
-              </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="bg-white border-2 border-corporate-blue rounded-lg p-6 text-center hover:shadow-lg transition-shadow">
+              <div className="text-3xl mb-4">🌍</div>
+              <h4 className="font-semibold text-gray-900 mb-2">AfCFTA</h4>
+              <p className="text-sm text-gray-600">African Continental Free Trade Area - Expanding youth-led businesses across Africa</p>
             </div>
-
-            <div className="bg-white rounded-lg p-6 shadow-md">
-              <div className="w-12 h-12 bg-sa-green rounded-lg flex items-center justify-center mb-4">
-                <span className="text-white text-2xl">🤝</span>
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                Networking Barriers
-              </h3>
-              <p className="text-gray-600 text-sm">
-                Difficulty connecting with experienced mentors, potential partners, 
-                and other entrepreneurs for collaboration and support.
-              </p>
+            
+            <div className="bg-white border-2 border-sa-blue rounded-lg p-6 text-center hover:shadow-lg transition-shadow">
+              <div className="text-3xl mb-4">🎯</div>
+              <h4 className="font-semibold text-gray-900 mb-2">UN SDGs</h4>
+              <p className="text-sm text-gray-600">United Nations Sustainable Development Goals - Promoting sustainable businesses</p>
             </div>
-
-            <div className="bg-white rounded-lg p-6 shadow-md">
-              <div className="w-12 h-12 bg-sa-gold rounded-lg flex items-center justify-center mb-4">
-                <span className="text-white text-2xl">📚</span>
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                Skills Gap
-              </h3>
-              <p className="text-gray-600 text-sm">
-                Lack of business management skills, digital literacy, and industry-specific 
-                knowledge needed for successful entrepreneurship.
-              </p>
+            
+            <div className="bg-white border-2 border-sa-green rounded-lg p-6 text-center hover:shadow-lg transition-shadow">
+              <div className="text-3xl mb-4">🏛️</div>
+              <h4 className="font-semibold text-gray-900 mb-2">AU Vision 2063</h4>
+              <p className="text-sm text-gray-600">African Union Vision - Driving industrialization and digital transformation</p>
             </div>
-
-            <div className="bg-white rounded-lg p-6 shadow-md">
-              <div className="w-12 h-12 bg-sa-red rounded-lg flex items-center justify-center mb-4">
-                <span className="text-white text-2xl">🏛️</span>
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                Policy Challenges
-              </h3>
-              <p className="text-gray-600 text-sm">
-                Complex regulatory environments and policies that don't always support 
-                young entrepreneurs and small business development.
-              </p>
-            </div>
-
-            <div className="bg-white rounded-lg p-6 shadow-md">
-              <div className="w-12 h-12 bg-corporate-blue rounded-lg flex items-center justify-center mb-4">
-                <span className="text-white text-2xl">🌐</span>
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                Market Access
-              </h3>
-              <p className="text-gray-600 text-sm">
-                Limited access to markets, customers, and distribution channels, 
-                especially for emerging businesses and startups.
-              </p>
-            </div>
-
-            <div className="bg-white rounded-lg p-6 shadow-md">
-              <div className="w-12 h-12 bg-sa-green rounded-lg flex items-center justify-center mb-4">
-                <span className="text-white text-2xl">⚡</span>
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                Infrastructure
-              </h3>
-              <p className="text-gray-600 text-sm">
-                Inadequate business infrastructure, including technology, logistics, 
-                and professional services support systems.
-              </p>
+            
+            <div className="bg-white border-2 border-sa-red rounded-lg p-6 text-center hover:shadow-lg transition-shadow">
+              <div className="text-3xl mb-4">🇿🇦</div>
+              <h4 className="font-semibold text-gray-900 mb-2">NDP 2030</h4>
+              <p className="text-sm text-gray-600">National Development Plan - Strengthening youth entrepreneurship in South Africa</p>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Our Values */}
-      <section className="py-16">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        {/* Leadership Team Preview */}
+        <section className="mb-20">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-              Our Values
+              Leadership
             </h2>
-            <p className="mt-4 text-lg leading-8 text-gray-600">
-              The principles that guide everything we do
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-corporate-blue rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white text-2xl">🎯</span>
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Excellence</h3>
-              <p className="text-gray-600 text-sm">
-                Striving for the highest standards in everything we do and supporting our members to achieve their best.
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 bg-sa-green rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white text-2xl">🤝</span>
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Collaboration</h3>
-              <p className="text-gray-600 text-sm">
-                Building bridges between entrepreneurs, organizations, and communities for mutual growth and success.
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 bg-sa-gold rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white text-2xl">💡</span>
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Innovation</h3>
-              <p className="text-gray-600 text-sm">
-                Encouraging creative thinking and innovative solutions to address Africa's business challenges.
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 bg-sa-red rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white text-2xl">🌱</span>
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Sustainability</h3>
-              <p className="text-gray-600 text-sm">
-                Promoting business practices that create long-term value for society and the environment.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Leadership Team */}
-      <section className="py-16 bg-gray-50">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-              Leadership Team
-            </h2>
-            <p className="mt-4 text-lg leading-8 text-gray-600">
-              Meet the leaders driving YCCI's mission forward
+            <p className="mt-4 text-lg text-gray-600">
+              Led by vibrant, experienced, and visionary young leaders
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-lg shadow-md overflow-hidden">
-              <div className="aspect-square bg-gray-200 flex items-center justify-center">
-                <span className="text-gray-400 text-4xl">👨‍💼</span>
+            <div className="bg-white border border-gray-200 rounded-lg p-6 text-center hover:shadow-lg transition-shadow">
+              <div className="w-24 h-24 bg-gradient-to-br from-corporate-blue to-sa-navy rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-white text-2xl font-bold">SD</span>
               </div>
-              <div className="p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-1">Sipho Dlamini</h3>
-                <p className="text-corporate-blue text-sm mb-3">Chief Executive Officer</p>
-                <p className="text-gray-600 text-sm">
-                  Serial entrepreneur with 15+ years of experience in building and scaling businesses across Africa.
-                </p>
-              </div>
+              <h4 className="font-semibold text-gray-900 mb-2">HE Siphilangenkosi Dlamini</h4>
+              <p className="text-sm text-corporate-blue mb-2">President</p>
+              <p className="corporate-body text-sm text-gray-600">Dynamic youth leader, researcher, and social impact advocate currently serving as President of YCCI Africa</p>
             </div>
 
-            <div className="bg-white rounded-lg shadow-md overflow-hidden">
-              <div className="aspect-square bg-gray-200 flex items-center justify-center">
-                <span className="text-gray-400 text-4xl">👩‍💼</span>
+            <div className="bg-white border border-gray-200 rounded-lg p-6 text-center hover:shadow-lg transition-shadow">
+              <div className="w-24 h-24 bg-gradient-to-br from-sa-green to-sa-gold rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-white text-2xl font-bold">TL</span>
               </div>
-              <div className="p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-1">Thandiwe Mbeki</h3>
-                <p className="text-corporate-blue text-sm mb-3">Director of Programs</p>
-                <p className="text-gray-600 text-sm">
-                  Former McKinsey consultant specializing in youth development and entrepreneurship programs.
-                </p>
-              </div>
+              <h4 className="font-semibold text-gray-900 mb-2">Thando Lukhele</h4>
+              <p className="text-sm text-corporate-blue mb-2">Deputy President</p>
+              <p className="text-xs text-gray-600">Constitutional Affairs & Partnerships portfolio, President of UCT SRC, passionate about inclusive leadership</p>
             </div>
 
-            <div className="bg-white rounded-lg shadow-md overflow-hidden">
-              <div className="aspect-square bg-gray-200 flex items-center justify-center">
-                <span className="text-gray-400 text-4xl">👨‍💼</span>
+            <div className="bg-white border border-gray-200 rounded-lg p-6 text-center hover:shadow-lg transition-shadow">
+              <div className="w-24 h-24 bg-gradient-to-br from-sa-blue to-sa-red rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-white text-2xl font-bold">MM</span>
               </div>
-              <div className="p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-1">Arjun Patel</h3>
-                <p className="text-corporate-blue text-sm mb-3">Head of Partnerships</p>
-                <p className="text-gray-600 text-sm">
-                  Tech industry veteran focused on building strategic partnerships and fostering innovation ecosystems.
-                </p>
-              </div>
+              <h4 className="font-semibold text-gray-900 mb-2">Michael Mnguni</h4>
+              <p className="text-sm text-corporate-blue mb-2">Director of Public Relations</p>
+              <p className="text-xs text-gray-600">Seasoned communications expert and public administrator with extensive experience in governance</p>
             </div>
           </div>
-        </div>
-      </section>
+          
+          <div className="text-center mt-8">
+            <a
+              href="/about/team"
+              className="inline-flex rounded-md bg-corporate-blue px-6 py-3 text-sm font-semibold text-white hover:bg-sa-navy transition-colors"
+            >
+              Meet Our Full Team
+            </a>
+          </div>
+        </section>
+
+        {/* Contact Information */}
+        <section>
+          <div className="bg-gradient-to-r from-corporate-blue to-sa-navy rounded-2xl p-8 text-white text-center">
+            <h2 className="text-2xl font-bold mb-4">
+              Get Involved with YCCI Africa
+            </h2>
+            <p className="text-white/90 mb-6 max-w-2xl mx-auto">
+              Join us in empowering young entrepreneurs and transforming Africa's economy through sustainable business development.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="/membership"
+                className="bg-sa-gold text-corporate-blue px-6 py-3 rounded-md font-semibold hover:bg-sa-white transition-colors"
+              >
+                Become a Member
+              </a>
+              <a
+                href="/contact"
+                className="border border-white text-white px-6 py-3 rounded-md font-semibold hover:bg-white hover:text-corporate-blue transition-colors"
+              >
+                Contact Us
+              </a>
+            </div>
+          </div>
+        </section>
+      </div>
     </div>
   )
 }
